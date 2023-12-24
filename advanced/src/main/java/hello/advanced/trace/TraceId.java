@@ -7,6 +7,7 @@ public class TraceId {
     private String id;
     private int level;
     
+    // id와 레벨을 가지고 있음
     public TraceId() {
         this.id = createId();
         this.level = 0;
@@ -30,6 +31,14 @@ public class TraceId {
     }
 
     public boolean isFirstLevel(){
+        return level==0;
+    }
 
+    public String getId() {
+        return id;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }
