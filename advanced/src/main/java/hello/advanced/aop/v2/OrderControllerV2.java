@@ -14,13 +14,13 @@ public class OrderControllerV2 {
     private final OrderServiceV2 orderService;
     private final HelloTraceV2 trace;
 
-    @GetMapping("/v1/request")
+    @GetMapping("/v2/request")
     public String request(@RequestParam String itemId){
 
         TraceStatus status = null;
         try {
             status = trace.begin("OrderController.request()");
-            orderService.orderItem(itemId);
+            orderService.orderItem(status.getTraceId(),itemId);
             trace.end(status);
             return "ok";
         } catch (Exception e) {
